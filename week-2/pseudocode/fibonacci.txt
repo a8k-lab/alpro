@@ -1,0 +1,30 @@
+function hitungFibonacci(n: integer) -> integer
+kamus
+  n1, n2, nNext, sum: integer
+algoritma
+  n1 <- 0
+  n2 <- 1
+  nNext <- n1 + n2
+  sum <- 0
+
+  for i <- 3 to n do
+    n1 = n2
+    n2 = nNext
+    nNext = n1 + n2
+
+    sum <- sum + nNext
+  endfor
+
+  return sum
+endfunction
+
+
+program Fibonacci
+kamus
+  jumlah, hasil : integer
+algoritma
+  input(jumlah)
+  hasil <- hitungFibonacci(jumlah)
+
+  output(hasil)
+endprogram

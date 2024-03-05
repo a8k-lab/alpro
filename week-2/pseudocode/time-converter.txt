@@ -1,0 +1,18 @@
+function waktuKeDetik(jam, menit, detik) -> integer
+kamus
+  totalWaktu: integer
+algoritma
+  totalWaktu <- (jam * 3600) + (menit * 60) + detik
+  return totalWaktu
+endfunction
+
+
+program KonversiWaktu
+kamus
+  inputJam, inputMenit, inputDetik, hasil : integer
+algoritma
+  input(jam, menit, detik)
+  hasil <- waktuKeDetik(inputJam, inputMenit, inputDetik)
+
+  output("Hasil konversi =", hasil)
+endprogram

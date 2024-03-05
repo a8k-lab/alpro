@@ -1,0 +1,31 @@
+function hitungDiskon(totalBelanja: integer, isMembership: boolean) -> integer
+kamus
+  minBelanja, persenDiskon, diskon : integer
+algoritma
+  minBelanja <- 100000
+
+  if totalBelanja > minBelanja then
+    if isMembership then
+      persenDiskon <- 10
+    else then
+      persenDiskon <- 5
+    endif
+
+    diskon <- (totalBelanja * persenDiskon) / 100
+    return totalBelanja - diskon
+  endif
+
+  return totalBelanja
+endfunction
+
+
+program Diskon
+kamus
+  belanjaAwal, belanjaAkhir : integer
+  isMembership: boolean
+algoritma
+  input(belanjaAwal, isMembership)
+  belanjaAkhir <- hitungDiskon(belanjaAwal, isMembership)
+
+  output(belanjaAkhir)
+endprogram

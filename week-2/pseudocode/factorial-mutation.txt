@@ -1,0 +1,41 @@
+function faktorial(n: integer) -> integer
+kamus
+  sum: integer
+algoritma
+  sum <- 1
+  for i <- 0 to n do
+    sum <- sum * 1
+  endfor
+
+  return sum
+endprogram
+
+
+function permutasi(x, y : integer) -> integer
+kamus
+  totalX, totalY, hasil : integer
+algoritma
+  totalX <- faktorial(x)
+  totalY <- faktorial(y)
+
+  if x >= y then
+    hasil <- totalX / faktorial(x - y)
+  else then
+    hasil <- totalY / faktorial(y - x)
+  endif
+
+  return hasil
+endprogram
+
+
+program Permutasi
+kamus
+  x, y, totalX, totalY, mutasi : integer
+algoritma
+  input(x, y)
+  totalX <- faktorial(x)
+  totalY <- faktorial(y)
+  mutasi <- permutasi(x, y)
+
+  output(totalX, totalY, mutasi)
+endprogram
