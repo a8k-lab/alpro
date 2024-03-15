@@ -1,0 +1,35 @@
+procedure zoomIn(in/out panjang, lebar : integer, in skala : integer)
+{I.S. Terdefinisi sebuah gambar berukuran panjang * lebar piksel dan skala yang bernilai 1..100
+F.S. Nilai panjang dan lebar diperbesar sebesar skala kali}
+algoritma
+  panjang <- panjang * skala
+	lebar <- lebar * skala
+endprocedure
+
+procedure zoomOut(in/out panjang, lebar : integer, in skala : integer)
+{I.S. Terdefinisi sebuah gambar berukuran panjang * lebar piksel dan skala yang bernilai 1..100
+F.S. Nilai panjang dan lebar diperbesar sebesar (1/skala) kali}
+algoritma
+  panjang <- panjang / skala
+	lebar <- lebar / skala
+endprocedure
+
+program HitungUkuranGambar
+kamus
+  panjang, lebar, skala : integer
+  operasi : string
+algoritma
+  input(panjang, lebar)
+  input(operasi, skala)
+
+  if operasi == "+" then
+    zoomIn(panjang, lebar, skala)
+  else if operasi == "-" then
+    zoomOut(panjang, lebar, skala)
+  else then
+    {jika operasi yang di-input bukan "+" atau "-", maka akhiri program}
+    return
+  endif
+
+  output(panjang, lebar)
+endprogram

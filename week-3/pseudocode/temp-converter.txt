@@ -1,0 +1,20 @@
+procedure konversiSuhu(in celcius : float, in/out reamur, fahrenheit, kelvin : float)
+{I.S. terdefinisi bilangan riil yang menyatakan nominal uang
+F.S. variabel reamur, fahrenheit, dan kelvin berisi hasil konversi masing-masing suhu dari celcius}
+algoritma
+  reamur <- celcius * (4.0 / 5.0)
+  fahrenheit <- celcius * (9.0 / 5.0) + 32
+  kelvin <- celcius + 273.15
+endprocedure
+
+program Suhu
+kamus
+  celcius, reamur, fahrenheit, kelvin : float
+algoritma
+  input(celcius)
+
+  konversiSuhu(celcius, reamur, fahrenheit, kelvin)
+  output(reamur, "R ")
+  output(fahrenheit, "F ")
+  output(kelvin, "K")
+endprogram

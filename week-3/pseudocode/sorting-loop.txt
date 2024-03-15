@@ -1,0 +1,24 @@
+procedure mengurutkan(in/out a, b : integer)
+{I.S. terdefinisi bilangan bulat a dan b
+F.S. nilai a < b, proses pertukaran nilai pada variabel a dan b mungkin dilakukan}
+algoritma
+  if a > b then
+    {jika a lebih besar dari b, maka tukar nilainya}
+    a <- a + b
+		b <- a - b
+		a <- a - b
+  endif
+endprocedure
+
+program UrutDuaBilangan
+kamus
+  a, b : integer
+algoritma
+  repeat
+    input(a, b)
+    mengurutkan(a, b)
+    if a != b then
+      output(a, b)
+    endif
+  until a == b
+endprogram

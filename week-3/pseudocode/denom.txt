@@ -1,0 +1,37 @@
+procedure pecahUang(in uang : integer, in/out k10, k2, k1 : integer)
+{I.S. terdefinisi bilangan bulat yang menyatakan nominal uang
+F.S. variabel k10, k2, dan k1 berisi denom 10000, 2000, dan 1000 dari nominal uang}
+algoritma
+  if uang >= 10000 then
+		k10 <- uang / 10000
+		uang <- uang % 10000
+	else then
+		k10 <- 0
+	endif
+
+	if uang >= 2000 then
+		k2 <- uang / 2000
+		uang <- uang % 2000
+	else then
+		k2 <- 0
+	endif
+
+	if uang >= 1000 then
+		k1 <- uang / 1000
+		uang <- uang % 1000
+	else then
+		k1 <- 0
+	endif
+endprocedure
+
+program Denominasi
+kamus
+  uang, k10, k2, k1 : integer
+algoritma
+  input(uang)
+
+  pecahUang(uang, k10, k2, k1)
+  output(k10, "lembar 10000")
+	output(k2, "lembar 2000")
+	output(k1, "lembar 1000")
+endprogram
