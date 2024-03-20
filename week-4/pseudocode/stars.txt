@@ -1,0 +1,22 @@
+procedure cetakBintang(N : integer)
+algoritma
+  if N <= 0 then
+    return
+  endif
+
+  cetakBintang(N - 1)
+  for i <- 0 to N do
+    output("*")
+    i <- i + 1
+  endfor
+  output("\n")
+endprocedure
+
+
+program BarisBintang
+kamus
+  jmlBaris : integer
+algoritma
+  input(jmlBaris)
+  cetakBintang(jmlBaris)
+endprogram

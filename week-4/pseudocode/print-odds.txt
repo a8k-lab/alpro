@@ -1,0 +1,18 @@
+procedure cetakBarisanGanjil(n : integer)
+algoritma
+  if n <= 0 then
+    return
+  endif
+  cetakBarisanGanjil(n - 1)
+  if n MOD 2 != 0 then
+    output(n, " ")
+  endif
+endprocedure
+
+program BarisanGanjil
+kamus
+  n : integer
+algoritma
+  input(n)
+  cetakBarisanGanjil(n)
+endprogram
