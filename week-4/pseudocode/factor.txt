@@ -1,0 +1,6 @@
+function faktor(in angka : integer) -> integer
+kamus
+algoritma
+  output(angka )
+endfunction
+  
