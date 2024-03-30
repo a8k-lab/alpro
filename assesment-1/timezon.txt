@@ -1,0 +1,37 @@
+function kurang(a, b : integer) -> integer
+{akan dikembalikan hasil a - b}
+algoritma
+  return a - b
+endfunction
+
+
+Program timeZon
+Kamus Data
+  saldo, A, B, C : integer
+  tipe : string
+Algoritma
+  A <- 10000
+  B <- 30000
+  C <- 50000
+
+  input(saldo)
+  {jalankan perulangan selama saldo lebih besar dari harga permainan}
+  for saldo > A OR saldo > B OR saldo > C then
+    input(tipe)
+    if tipe == "A" then
+      if saldo < A then
+        saldo <- kurang(saldo, A)
+      endif
+    else if tipe == "B" then
+      if saldo < B then
+        saldo <- kurang(saldo, B)
+      endif
+    else then
+      if saldo > C then
+        saldo <- kurang(saldo, C)
+      endif
+    endif
+
+    output("sisa saldo :", saldo)
+  endfor
+endProgram
