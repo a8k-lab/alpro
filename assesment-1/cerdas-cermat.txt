@@ -1,6 +1,6 @@
 procedure tampilkanPemenang(in N : integer, in/out pemenang : string)
 {I.S. terdefinisi N bilangan bulat yang menyatakan jumlah babak cerdas cermat
-F.S. variable pemenang berisi string antara "pemain 1", "pemain 2", atau "draw}
+F.S. variable pemenang berisi string antara "pemain 1", "pemain 2", atau "draw"}
 kamus
   skorPemain1, skorPemain2, jmlMenang1, jmlMenang2 : integer
 algoritma
@@ -12,11 +12,14 @@ algoritma
 
     if skorPemain1 > skorPemain2 then
       jmlMenang1 <- jmlMenang1 + 1
+      output("pemenang : pemain 1")
     else if skorPemain2 > skorPemain1 then
      jmlMenang2 <- jmlMenang2 + 1
+      output("pemenang : pemain 2")
     else then
       jmlMenang1 <- jmlMenang1 + 1
       jmlMenang2 <- jmlMenang2 + 1
+      output("pemenang : draw")
     endif
 
     pemenang <- "pemain 1"
@@ -25,8 +28,6 @@ algoritma
     else then
       pemenang <- "draw"
     endif
-
-    output("pemenang :", pemenang)
   endfor
 endprocedure
 
