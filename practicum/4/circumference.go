@@ -19,17 +19,28 @@ func hitungTotal(lLingkaran, lPersegi, kLingkaran, kPersegi float64, tLuas, tKel
 
 func main() {
 	var R, S, LL, LP, KL, KP, TL, TP float64
-	R = -1
-	S = -1
+	var resultArr = [20][8]float64{}
+	var resultLen int
 
-	fmt.Printf("%7s %7s %7s %7s %7s %7s %7s %7s \n", "R", "S", "LL", "LP", "KL", "KP", "TL", "TP")
-	for R != 0 && S != 0 {
-		fmt.Scan(&R, &S)
+	fmt.Scan(&R, &S)
+	if R == 0 && S == 0 {
+		return
+	}
 
+	for i := 0; R != 0 && S != 0; i++ {
 		hitungLuasKelilingLingkaran(R, &LL, &KL)
 		hitungLuasKelilingPersegi(S, &LP, &KP)
 		hitungTotal(LL, LP, KL, KP, &TL, &TP)
 
-		fmt.Printf("%7s %7s %7s %7s %7s %7s %7s %7s \n", R, S, LL, LP, KL, KP, TL, TP)
+		resultArr[i] = [8]float64{R, S, LL, LP, KL, KP, TL, TP}
+		resultLen = i + 1
+
+		fmt.Scan(&R, &S)
+	}
+
+	fmt.Printf("%7s %7s %7s %7s %7s %7s %7s %7s \n", "R", "S", "LL", "LP", "KL", "KP", "TL", "TP")
+
+	for _, v := range resultArr[:resultLen] {
+		fmt.Printf("%7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f %7.2f \n", v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7])
 	}
 }

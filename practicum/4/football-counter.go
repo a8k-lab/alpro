@@ -26,22 +26,26 @@ func hitungJumGolKegolanSelisih(g, k int, jg, jk, jsg *int) {
 	*jsg += g - k
 }
 
-func hitungJumPoint(jp *int) {
-
+func hitungJumPoint(jm, jd int, jp *int) {
+	*jp = jm*3 + jd
 }
 
 func main() {
-	var N, gol, kemasukan int
-	var jumGol, jumKemasukan, jumSelisihGol, jumMenang, jumDraw, jumKalah int
+	var N, gol, kegolan int
+	var jumGol, jumKegolan, jumSelisihGol, jumMenang, jumDraw, jumKalah, jumPoin int
 
 	fmt.Scan(&N)
 
 	for i := 0; i < N; i++ {
-		fmt.Scan(&gol, &kemasukan)
+		fmt.Scan(&gol, &kegolan)
 
-		hitungMenang(gol, kemasukan, &jumMenang)
-		hitungDraw(gol, kemasukan, &jumDraw)
-		hitungKalah(gol, kemasukan, &jumKalah)
-		hitungJumGolKegolanSelisih(gol, kemasukan, &jumGol, &jumKemasukan, &jumSelisihGol)
+		hitungMenang(gol, kegolan, &jumMenang)
+		hitungDraw(gol, kegolan, &jumDraw)
+		hitungKalah(gol, kegolan, &jumKalah)
+		hitungJumGolKegolanSelisih(gol, kegolan, &jumGol, &jumKegolan, &jumSelisihGol)
+		hitungJumPoint(jumMenang, jumDraw, &jumPoin)
 	}
+
+	jumMain := jumMenang + jumDraw + jumKalah
+	fmt.Println(jumMain, jumMenang, jumDraw, jumKalah, jumGol, jumKegolan, jumSelisihGol, jumPoin)
 }
