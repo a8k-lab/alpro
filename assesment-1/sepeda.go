@@ -19,7 +19,7 @@ func durasi(jam, menit int) int {
 	if jam >= 1 {
 		hasil += jam
 	}
-	if menit >= 10 || (jam < 1 && menit < 10) {
+	if menit >= 10 || (jam < 1 && menit < 10 && menit > 1) {
 		hasil += 1
 	}
 
@@ -53,4 +53,5 @@ func hitungSewa(jam, menit int, member bool, biaya *float64) {
 	totalPotongan = potongan(totalDurasi, totalTarif)
 
 	*biaya = float64(totalTarif) - totalPotongan
+	fmt.Println("Durasi:", totalDurasi)
 }
