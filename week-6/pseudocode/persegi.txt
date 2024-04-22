@@ -1,0 +1,36 @@
+procedure isiData(in/out persegi : rectangle)
+{I.S. data persegi telah siap pada piranti masukan (length, width dan color)
+ F.S. length, width dan color dari persegi telah terisi dari masukan}
+algoritma
+  input(persegi.length, persegi.width)
+  input(persegi.color)
+endprocedure
+
+
+procedure hitung(in/out persegi : rectangle)
+{I.S. terdefinisi data persegi (length, width dan color)
+ F.S. area dan perimeter dari persegi berisi luas dan keliling dari persegi}
+algoritma
+  {luas persegi panjang}
+  persegi.property.area <- persegi.length * persegi.width
+  {keliling persegi panjang}
+  persegi.property.perimeter <- 2 * (persegi.length + persegi.width)
+endprocedure
+
+
+program Persegi
+kamus
+  type rectangle < 
+    length, width : integer
+    color : string
+    property : geometry
+  >
+  type geometry < area, perimeter : integer >
+  inputPersegi : rectangle
+algoritma
+  isiData(inputPersegi)
+  hitung(inputPersegi)
+
+  {menampilkan luas dan keliling dari persegi panjang}
+  output(inputPersegi.geometry.area, inputPersegi.geometry.perimeter)
+endprogram

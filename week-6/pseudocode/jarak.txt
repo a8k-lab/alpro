@@ -1,0 +1,28 @@
+function jarak(in P1, P2 : titik) -> real
+{diterima nilai sumbu dari titik P1 dan P2, untuk mengembalikan jarak dari P1 dan P2}
+kamus
+  hasilX, hasilY : real
+algoritma
+  {dikalikan karena akar kuadrat}
+  hasilX <- (P1.x - P2.x) * (P1.x - P2.x)
+  hasilY <- (P1.y - P2.y) * (P1.y - P2.y)
+
+  return akar(hasilX + hasilY) 
+endfunction
+
+
+function akar(in x : real) -> real
+{diterima nilai suatu x untuk mengembalikan akar kuadrat dari x, fungsi ini terdefinisi dan tinggal digunakan saja}
+endfunction
+
+
+program JarakTitik
+kamus
+  type titik< x, y : real >
+  P1, P2 : titik
+  hasilJarak : real
+algoritma
+  input(P1.x, P1.y, P2.x, P2.y)
+  hasilJarak <- jarak(P1, P2)
+  output(hasilJarak)
+endprogram
