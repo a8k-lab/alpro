@@ -1,0 +1,45 @@
+Program Main
+Kamus Data
+  firstNum, lastNum, frekNum, jumlah, jumlahAvg : integer
+
+Procedure proses1himp (in/out first, last, frek, jumlah: integer)
+{I.S. inputan data-data anggota sebuah himpunan siap dari piranti input. angka yang diinputkan merupakan kelipatan dari angka sebelumnya.
+F.S  dihasilkan data angka pertama- var first, data angka terakhir-var last, jumlah angka kurang dari angka pertama- var frek, jumlah anggota himpunan- var jumlah} 
+Kamus Data Procedure
+  prevInput, currInput : integer
+Algoritma Procedure
+  jumlahAvg <- 0
+  input(first)
+  prevInput <- first
+
+  {for dimulai dari 2, karena 1 sudah diisi oleh first}
+  for i <- 2 to 10 do
+    input(currInput)
+    jumlah <- jumlah + 1
+
+    if currInput < first then
+      frek <- frek + 1
+    endif
+
+    {hentikan perulangan jika currInput merupakan kelipatan dari prevInput}
+    if currInput mod prevInput == 0 then
+      break
+    endif
+
+    prevInput <- currInput
+  endfor
+
+  {menjumlahkan semua selisih angka pertama dan terakhir ke var jumlahAvg}
+  if last >= first then
+    jumlahAvg <- jumlahAvg + (last - first)
+  else then
+    jumlahAvg <- jumlahAvg + (first - last)
+  endif
+endProcedure
+
+
+Algoritma Main
+  proses1himp(firstNum, lastNum, frekNum, jumlah)
+  {menampilkan rata-rata selisih pertama dan terakhir}
+  output(jumlahAvg / jumlah)
+endProgram

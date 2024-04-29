@@ -1,0 +1,13 @@
+function tabungan(t, n : integer) --> integer
+{mengembalikan total tabungan setelah N minggu dengan tabungan awal sebesar t}
+Kamus Data
+  tambahan : integer
+Algoritma
+  tambahan <- 2500
+
+  if n == 1 then
+    return t
+  endif
+
+  return tabungan (t+t, n-1) + tambahan
+endFunction

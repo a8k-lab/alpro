@@ -1,0 +1,36 @@
+Program Main
+Kamus Data
+// deklarasi kamus data disini
+ulang : boolean
+inputAlas, inputTinggi, luas, jmlTidakRange : integer
+
+// buatlah function lengkap disini
+function hitungSegitiga(in alas, tinggi : integer) -> integer
+  return (alas * tinggi) / 2
+endfunction
+
+Algoritma
+  ulang <- true
+  jmlTidakRange <- 0
+
+  while ulang do
+    input(inputAlas, inputTinggi)
+
+    {cek apakah input alas atau tinggi adalah minus}
+    if inputAlas < 0 or inputTinggi < 0 then
+      break
+      ulang <- false
+    endif
+    luas <- hitungSegitiga(inputAlas, inputTinggi)
+
+    {tampilkan luas segitiga jika hasilnya di antara range, sebaliknya tambahkan jmlTidakRange}
+    if luas >= 10 and luas <= 20 then
+      output(luas)
+    else then
+      jmlTidakRange <- jmlTidakRange + 1
+    endif
+  endwhile
+
+  {menampilkan jumlah luas yang tidak masuk ke range}
+  output(jmlTidakRange)
+endProgram
