@@ -1,0 +1,5 @@
+function ubahKoordinat(x : integer) -> integer
+{akan dikembalikan hasil 2 * x + 5}
+algoritma
+  return 2 * x + 5
+endfunction

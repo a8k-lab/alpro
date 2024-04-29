@@ -1,0 +1,23 @@
+procedure hitungAngkaKembar(in N : integer, in/out jumKembar : integer)
+{I.S. terdefinisi N bilangan bulat yang menyatakan berapa kali user akan memasukkan input
+F.S. variable jumKembar akan berisi jumlah input yang kembar/sama}
+kamus
+  input1, input2 : integer
+algoritma
+  for i <- 0 to N do
+    input(input1, input2)
+
+    if input1 == input2 then
+      jumKembar <- jumKembar + 1
+    endif
+  endfor
+endprocedure
+
+
+program AngkaKembar
+kamus
+  N, jumKembar : integer
+algoritma
+  input(N)
+  hitungAngkaKembar(N, jumKembar)
+endProgram

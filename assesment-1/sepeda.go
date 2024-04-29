@@ -53,5 +53,4 @@ func hitungSewa(jam, menit int, member bool, biaya *float64) {
 	totalPotongan = potongan(totalDurasi, totalTarif)
 
 	*biaya = float64(totalTarif) - totalPotongan
-	fmt.Println("Durasi:", totalDurasi)
 }
