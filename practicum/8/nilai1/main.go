@@ -17,6 +17,8 @@ func main() {
 func bacaNilai(NA *tabInt, n *int) {
 	fmt.Scan(n)
 
+	// jika n nilainya lebih dari NMAX
+	// maka n diubah nilainya menjadi NMAX (10)
 	if *n > NMAX {
 		*n = NMAX
 	}

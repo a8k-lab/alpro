@@ -51,6 +51,8 @@ func cetak(A tabInt, n int) {
 func jumlah(A tabInt, n int) int {
 	var sum int = 0
 	for i := 0; i < n; i++ {
+		// jika angka merupakan negatif
+		// maka diubah menjadi positif dahulu sebelum ditambah ke `sum`
 		if A[i] < 0 {
 			sum += A[i] * -1
 		} else {
@@ -62,6 +64,8 @@ func jumlah(A tabInt, n int) int {
 }
 
 func rata_rata(A tabInt, n int) float64 {
+	// jika n = 0
+	// maka kembalikan NaN (Not a Number) yang diambil dari package `math` bawaan Go
 	if n == 0 {
 		return math.NaN()
 	}
