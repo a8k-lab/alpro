@@ -1,8 +1,8 @@
 procedure urutNIP(in/out tabPeg: ArrPeg)
 {insertion sort secara ascending}
 kamus
-  pass, i, temp: integer
-  poinIndex, poinPass: integer
+  pass, i : integer
+  temp : peg
 algoritma
   while pass <= N do
     pass <- 1
@@ -19,25 +19,22 @@ endprocedure
 
 
 
-procedure Bottom(in/out tabPeg: ArrPeg)
-{selection sort secara ascending}
-kamus
-  pass, idx, i: integer
-algoritma
+Procedure bottom (In/out tabPeg : ArrPeg)
+{I.S. Terdefinisi sebuah Array berisi data pegawai dengan N data yang tidak terurut.
+F.S. Dengan menggunakan INSERTION sort, data pegawai menjadi terurut berdasarkan TAHUN LAHIR secara Descending. Di layar ditampilkan nama pegawai dengan tahun lahir termuda}
+Kamus Data
+  pass, i : integer
+  temp : peg
+Algoritma
   pass <- 1
-  while pass < N do
-    idx <- pass - 1
+  while pass <= N - 1 do
     i <- pass
-
-    while i < n do
-      if tabPeg[idx].tahunLahir > tabPeg[i].tahunLahir then
-        idx <- i
-      endif
+    temp <- tabPeg[pass]
+    while i > 0 AND temp.tahunLahir > tabPeg[i-1].tahunlahir do
+      tabPeg[i] <- tabPeg[i-1]
+      i <- i - 1
     endwhile
-    i <- i + 1
-    temp <- tabPeg[pass-1]
-    tabPeg[pass-1] <- tabPeg[idx]
-    tabPeg[idx] <- temp
+    tabPeg[i] <- temp
     pass <- pass + 1
   endwhile
 endprocedure
