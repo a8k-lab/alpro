@@ -1,0 +1,39 @@
+type Himpunan: array[0..99] of integer
+
+function irisArray(arrA, arrB: Himpunan) -> Himpunan
+{mengembalikan array yang mencakup nilai dari arrA yang sama dengan arrB}
+kamus
+  arrBaru: Himpunan
+  i, j: integer
+algoritma
+  i <- 0
+  j <- 0
+
+  {mengambil nilai dari arrA dan arrB}
+  for i <- 0 to length(arrA) - 1 do
+    for j <- 0 to length(arrB) - 1 do
+      if arrA[i] === arrB[j] then
+        arrBaru[i] <- arrA[i]
+        break {kembali ke loop pertama, untuk menghindari duplikasi}
+      endif
+    endfor
+  endfor
+
+  return arrBaru
+endfunction
+
+
+Program Irisan
+kamus
+  A: array[0..7] of integer
+  B: array[0..5] of integer
+  hasilIrisan: Himpunan
+algoritma
+  {contoh array diambil dari soal}
+  A <- [11, 28, 33, 64, 95, 16, 100, 15]
+  B <- [3, 11, 7, 28, 33,6]
+
+  hasilIrisan <- irisArray(A, B)
+
+  output("Hasil irisan A dan B: ", hasilIrisan)
+endprogram

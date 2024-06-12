@@ -1,0 +1,77 @@
+const nMax: integer <- 100
+type tabInt: array[0..nMax-1] of integer
+
+
+function cariMedian(arrayN: tabInt, n: integer) -> real
+{mengembalikan bilangan median dari arrayN}
+kamus
+  tengah1, tengah2: integer
+algoritma
+  {jika panjang arrayN adalah genap}
+  if n MOD 2 = 0 then
+    tengah1 <- arrayN[n/2-1]
+    tengah2 <- arrayN[n/2]
+    return (tengah1 + tengah2) / 2
+  endif
+
+  {jika panjang arrayN adalah ganjil}
+  return arrayN[n/2]
+endfunction
+
+
+procedure isiArray(in/out arrayN: tabInt, in n: integer)
+{I.S. terdefinisi arrayN yang masih kosong
+  F.S. arrayN berisi n bilangan bulat}
+kamus
+  i: integer
+algoritma
+  i <- 0
+  while i < n do
+    input(arrayN[i])
+    i <- i + 1
+  endwhile
+endprocedure
+
+
+procedure urut(in/out arrayN: tabInt, in n: integer)
+{I.S. terdefinisi array arrayN yang berisi n bilangan bulat
+  F.S. arrayN terurut secara ascending}
+kamus
+  pass, i, temp: integer
+algoritma
+  pass <- 1
+  while pass < n do
+    i <- pass
+    temp <- arrayN[pass]
+    while i > 0 AND temp < arrayN[i-1] do
+      arrayN[i] <- arrayN[i-1]
+      i <- i - 1
+    endwhile
+    arrayN[i] <- temp
+    pass <- pass + 1
+  endwhile
+endprocedure
+
+
+Program Median
+kamus
+  i, n: integer
+  arrayN: tabInt
+  hasilMedian: real
+algoritma
+  i <- 0
+  {inputan panjang arrayN oleh user}
+  input(n)
+
+  {isi elemen arrayN}
+  isiArray(arrayN, n)
+
+  {mengurutkan arrayN secara ascending}
+  urut(arrayN, n)
+
+  {mencari median dari arrayN}
+  hasilMedian <- cariMedian(arrayN, n)
+
+  {menampilkan hasil}
+  output(hasilMedian)
+endprogram

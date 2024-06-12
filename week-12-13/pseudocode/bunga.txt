@@ -1,0 +1,90 @@
+const nMax: integer <- 100
+type arrayBunga: array[0..nMax-1] of string
+
+
+function panjang(bunga : string) -> integer
+{mengembalikan jumlah karakter pada string bunga, titik dan underscore tidak dihitung}
+kamus
+  i, hasil: integer
+algoritma
+  i <- 0
+  hasil <- 0
+  for i <- 0 to length(bunga) - 1
+    if bunga[i] = '_' OR bunga[i] = '.' then
+      hasil <- '-'
+    endif
+  endfor
+
+  return hasil
+endfunction
+
+
+procedure mengurutkan(in/out tabBunga: arrayBunga, in N: integer)
+{IS. tabBunga berisi N nama bunga, asumsi belum terurut
+  FS. tabBunga terurut berdasarkan jumlah karakter pada masing-masing nama bunga secara ascending (membesar) menggunakan SELECTION SORT}
+kamus
+  pass, idx, i, temp: integer
+algoritma
+  pass <- 1
+  while pass < n do
+    idx <- pass - 1
+    i <- pass
+    while i < n do
+      if panjang(tabBunga[i]) > panjang(tabBunga[idx]) then
+        idx <- i
+      endif
+      i <- i + 1
+    endwhile
+    temp <- tabBunga[pass-1]
+    tabBunga[pass-1] <- tabBunga[idx]
+    tabBunga[idx] <- temp
+    pass <- pass + 1
+  endwhile
+endprocedure
+
+
+procedure isiArray (in/out tabBunga: arrayBunga, in N : integer)
+{IS. terdefinisi array tabBunga yang masih kosong
+  FS. array tabBunga berisi sejumlah N nama bunga yang berasal dari input user}
+kamus
+  i: integer
+algoritma
+  i <- 0
+  while i < n do
+    input(tabBunga[i])
+    i <- i + 1
+  endwhile
+endprocedure
+
+
+procedure tampilArray(in tabBunga: arrayBunga, N: integer)
+{IS. tabBunga berisi sejumlah N nama bunga
+  FS. menampilkan nama bunga yang terdapat pada array tabBunga}
+kamus
+  i: integer
+algoritma
+  i <- 0
+  while i < n do
+    output(arrayN[i])
+    i <- i + 1
+  endwhile
+endprocedure
+
+
+Program Bunga
+kamus
+  n: integer
+  bunga: string
+  arrayBunga: arrayBunga
+algoritma
+  input(n)
+
+  {isi elemen arrayBunga}
+  isiArray(arrayBunga, n)
+
+  {mengurutkan jumlah karakter elemen arrayBunga secara ascending}
+  mengurutkan(arrayBunga, n)
+
+  {menampilkan hasilnya}
+  tampilArray(arrayBunga, n)
+endprogram

@@ -1,0 +1,86 @@
+type Tim: <
+  nama: string
+  gold: integer
+  silver: integer
+  bronze: integer
+>
+type Olimpiade: array[..] of Tim
+
+
+function hitungPoin(in gold, silver, bronze : integer) -> integer
+{mengembalikan jumlah poin yang diberikan olimpiade}
+algoritma
+  return (4*gold) + (2*silver) + bronze
+endfunction
+
+
+procedure urutTim(in/out arrayTim: array[0..n-1] of Tim)
+{IS. terdefinisi arrayTim yang berisi array dari tim
+  FS. arrayTim terurut poinnya menggunakan algoritma Insertion sort (ascending)}
+kamus
+  pass, i, temp: integer
+  poinIndex, poinPass: integer
+algoritma
+  pass <- 1
+  while pass < n do
+    i <- pass
+    poinIndex <- hitungPoin(arrayTim[i-1].gold, arrayTim[i-1].silver, arrayTim[i-1].bronze)
+    poinPass <- hitungPoin(arrayTim[i].gold, arrayTim[i].silver, arrayTim[i].bronze)
+    temp <- arrayTim[pass]
+
+    while i > 0 AND poinIndex > poinPass do
+      arrayTim[i] <- arrayTim[i-1]
+      i <- i - 1
+    endwhile
+    arrayTim[i] <- temp
+    pass <- pass + 1
+  endwhile
+endprocedure
+
+
+procedure isiArray(in/out t: Olimpiade, n: integer)
+{mengisi array olimpiade dengan jumlah n}
+algoritma
+  i <- 0
+  input(n)
+  while i < n do
+    input(t[i].nama)
+    input(t[i].gold)
+    input(t[i].silver)
+    input(t[i].bronze)
+    i <- i + 1
+  endwhile
+endprocedure
+
+
+procedure tampilArray(in t: Olimpiade, n: integer)
+{I.S. terdefinisi sebuah array t yang berisi n data tim dan perolehan medalinya
+  F.S. menampilkan array t}
+kamus
+  i: integer
+algoritma
+  i <- 0
+  while i < n do
+    print(t[i].nama)
+    print(t[i].gold)
+    print(t[i].silver)
+    print(t[i].bronze)
+    i <- i + 1
+  endwhile
+endprocedure
+
+
+Program Perlombaan
+kamus
+  tab: Olimpiade
+  n: integer
+algoritma
+  {isi elemen tab}
+  isiArray(tab, n)
+
+  {mengurutkan tab secara ascending}
+  urutTim(tab, n)
+
+  {menampilkan hasilnya}
+  tampilArray(tab, n)
+endprogram

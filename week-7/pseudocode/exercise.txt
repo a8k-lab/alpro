@@ -1,0 +1,76 @@
+procedure fillArray(in/out arr: tab, n: integer)
+/*I.S. Data tersedia dalam piranti masukan
+  F.S. Array `arr` berisi sebanyak n angka yang dimasukkan user
+*/
+algoritma
+	for i <- 0 to N do
+		input(arr[i])
+	endfor
+endprocedure
+
+
+procedure reverseArray(in/out arr : array[] of integer)
+/*I.S. Terdefinisi array `arr` berisi sebanyak n angka
+  F.S. Isi array `arr` sudah di-reverse (dibalik isinya)
+*/
+kamus
+	var pointer1, pointer2, temp : integer
+algoritma
+	pointer1 <- 0
+	pointer2 <- length(arr) - 1
+
+	while pointer1 < pointer2 do
+		temp <- arr[pointer1]
+		arr[pointer1] <- arr[pointer2]
+		arr[pointer2] <- temp
+
+		pointer1 <- pointer1 + 1
+		pointer2 <- pointer2 - 1
+	endwhile
+endprocedure
+
+
+function isArrayPalindrome(in arr : array[] of integer) boolean
+/* Mengembalikan nilai boolean
+	true jika array `arr` adalah palindrom
+	false jika sebaliknya
+*/
+kamus
+  pointer1, pointer2 : integer
+algoritma
+  pointer1 <- 0
+  pointer2 <- length(arr) - 1
+
+  while pointer1 < pointer2 do
+    if arr[pointer1] != arr[pointer2] then
+      return false
+    endif
+
+    pointer1 <- pointer1 + 1
+    pointer2 <- pointer2 - 1
+  endwhile
+
+  return true
+endfunction
+
+
+program Main
+kamus
+  N : integer
+  {N-1 karena akan menjadi index, sehingga index terakhir array adalah 255}
+  type tab : array[0..N-1] of integer
+  listAngka : tab
+algoritma
+  N <- 256
+  fillArray(listAngka, 10)
+  output(listAngka)
+
+  output("Apakah listAngka adalah palindrom: ")
+	output(isArrayPalindrome(listAngka))
+
+	output("Kondisi awal listAngka: ")
+	output(listAngka)
+	reverseArray(listAngka)
+	output("Kondisi listAngka setelah di-reverse: ")
+	output(listAngka)
+endprogram

@@ -1,0 +1,38 @@
+function cekHimpunan(arr: array[..] of integer) -> boolean
+{mengembalikan true apabila tidak ada anggota array yang sama dari arr,  
+	atau false apabila sebaliknya}
+kamus
+  i, j: integer
+algoritma
+  i <- 0
+  j <- 0
+
+  for i <- 0 to length(arr) - 1 do
+    for j <- 0 to length(arr) - 1 do
+      if arr[i] === arr[j] then
+        {jika ada yang sama, maka return false yang sekaligus menghentikan perulangan}
+        return false
+      endif
+    endfor
+  endfor
+
+  return true
+endfunction
+
+
+Program Himpunan
+kamus
+  A: array[0..5] of integer
+  B: array[0..11] of integer
+  hasilA, hasilB: boolean
+algoritma
+  {contoh array diambil dari soal}
+  A <- [11, 28, 33, 64, 95, 16]
+  B <- [11, 28, 33, 64, 95, 16, 100, 28, 33, 64, 95, 16]
+
+  hasilA <- cekHimpunan(A)
+  hasilB <- cekHimpunan(B)
+
+  output("Himpunan A: ", hasilA) {akan mengeluarkan true (valid)}
+  output("Himpunan B: ", hasilB) {akan mengeluarkan false (tidak valid)}
+endprogram

@@ -1,0 +1,118 @@
+const nMax: integer <- 37
+
+type tHimpunan: <
+  anggota: array[0..nMax-1] of integer
+  panjang: integer
+>
+
+
+procedure bacaMasukan(in/out set: tHimpunan)
+{IS. data himpunan telah siap pada piranti masukan
+  FS. array anggota dari set berisi sejumlah bilangan}
+kamus
+  i, inputAnggota: integer
+algoritma
+  i <- 0
+
+  while i < nMax-1 do
+    input(inputAnggota)
+    if ada(set, inputAnggota) then
+      {jika anggota sudah ada di dalam array, maka akan keluar dari perulangan}
+      return
+    endif
+    set.anggota[i] <- inputAnggota
+    i <- i + 1
+  endwhile
+
+  {panjang diisi dengan index array ditambah 1}
+  set.panjang <- i + 1
+endprocedure
+
+
+function ada(set: tHimpunan, x: integer) -> boolean
+{mengembalikan true apabila x ada di dalam array anggota dari set, 
+	atau false apabila sebaliknya}
+kamus
+  i: integer
+algoritma
+  i <- 0
+
+  while i < set.panjang do
+    if set.anggota[i] == x then
+      return true
+    end
+    i <- i + 1
+  endwhile
+
+  return false
+endfunction
+
+
+procedure urut(in/out set: tHimpunan)
+{IS. terdefinisi himpunan set
+  FS. array anggota dari set terurut menggunakan algoritma 
+  Selection sort (ascending)}
+kamus
+  pass, idx, i, temp: integer
+algoritma
+  {pencarian nilai minimum}
+  pass <- 1
+  while pass < tHimpunan.panjang do
+    idx <- pass - 1
+    i <- pass
+    while i < tHimpunan.panjang do
+      if tHimpunan.anggota[i] > tHimpunan.anggota[idx] then
+        idx <- i
+      endif
+      i <- i + 1
+    endwhile
+    temp <- tHimpunan.anggota[pass-1]
+    tHimpunan.anggota[pass-1] <- tHimpunan.anggota[idx]
+    tHimpunan.anggota[idx] <- temp
+    pass <- pass + 1
+  endwhile
+endprocedure
+
+
+function sama(set1, set2: tHimpunan) -> boolean
+{mengembalikan true apabila set1 sama dengan set2, 
+	atau false apabila sebaliknya}
+kamus
+  i, j: integer
+algoritma
+  i <- 0
+  j <- 0
+  while i < set1.panjang and j < set2.panjang do
+    if set1.anggota[i] == set2.anggota[j] then
+      i <- i + 1
+      j <- j + 1
+    else
+      return false
+    endif
+  endwhile
+
+  return true
+endfunction
+
+
+Program Himpunan
+kamus
+  himpunan1, himpunan2: tHimpunan
+  himpunanSama: boolean
+algoritma
+	{inputan anggota himpunan 1 dan 2 oleh user}
+  input("Anggota himpunan 1: ")
+  bacaMasukan(himpunan1)
+  input("Anggota himpunan 2: ")
+  bacaMasukan(himpunan2)
+
+	{pengurutan himpunan 1 dan 2 secara ascending}
+  urut(himpunan1)
+  urut(himpunan2)
+
+	{periksa apakah anggota himpunan 1 dan 2 sama}
+  himpunanSama <- sama(himpunan1, himpunan2)
+  
+  {tampilkan hasilnya}
+  output("Himpunan 1 = Himpunan 2? ", himpunanSama)
+endprogram

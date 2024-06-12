@@ -1,0 +1,42 @@
+procedure urutNIP(in/out tabPeg: ArrPeg)
+kamus
+  pass, i, temp: integer
+  poinIndex, poinPass: integer
+algoritma
+  while pass <= N do
+    pass <- 1
+    temp <- tabPeg[pass]
+
+    while i > 0 AND temp.NIP < tabPeg[i-1].NIP do
+      tabPeg[i] <- tabPeg[i-1]
+      i <- i - 1
+    endwhile
+    tabPeg[i] <- temp
+    pass <- pass + 1
+  endwhile
+endprocedure
+
+
+
+procedure Bottom(in/out tabPeg: ArrPeg)
+kamus
+  pass, idx, i: integer
+algoritma
+  pass <- 1
+  while pass < N do
+    idx <- pass - 1
+    i <- pass
+
+    while i < n do
+      if tabPeg[idx].tahunLahir > tabPeg[i].tahunLahir then
+        idx <- i
+      endif
+    endwhile
+    i <- i + 1
+    temp <- tabPeg[pass-1]
+    tabPeg[pass-1] <- tabPeg[idx]
+    tabPeg[idx] <- temp
+    pass <- pass + 1
+  endwhile
+endprocedure
+

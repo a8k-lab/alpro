@@ -1,0 +1,42 @@
+type Himpunan: array[0..99] of integer
+
+function gabungArray(arrA, arrB: Himpunan) -> Himpunan
+{mengembalikan array yang mencakup nilai dari arrA yang sama dengan arrB}
+kamus
+  arrBaru: Himpunan
+  i, j: integer
+algoritma
+  i <- 0
+  j <- 0
+  arrBaru <- arrA {copy isi array A ke arrBaru}
+
+  {cek setiap anggota array B, apakah merupakan anggota arrBaru}
+  {jika bukan, maka ditambahkan ke arrBaru}
+  for i <- 0 to length(arrB) - 1 do
+    for j <- 0 to length(arrBaru) - 1 do
+      if arrB[i] === arrBaru[j] then
+        break {kembali ke loop pertama, untuk menghindari duplikasi}
+      endif
+    endfor
+    arrBaru[i] <- arrB[i]
+  endfor
+
+  return arrBaru
+
+endfunction
+
+
+Program Gabungan
+kamus
+  A: array[0..7] of integer
+  B: array[0..5] of integer
+  arrGabungan: Himpunan
+algoritma
+  {contoh array diambil dari soal}
+  A <- [11, 28, 33, 64, 95, 16, 100, 15]
+  B <- [3, 11, 7, 28, 33,6]
+
+  arrGabungan <- gabungArray(A, B)
+
+  output("Hasil gabungan A dan B: ", arrGabungan)
+endprogram

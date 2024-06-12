@@ -1,0 +1,41 @@
+Program Main
+
+Kamus Data Main
+  NMAX, N : integer
+  type tab : array[0..NMAX-1] of integer
+  arrBil : tab
+
+Procedure isiArray (in/out A : arrBil, N : integer)
+{I.S : Terdefinisi sebuah Array kosong dengan kapasitas maksimal 1000 data, dan inputan user yang sudah siap padapiranti input, Var N adalah jumlah data pada Array yang berisi nilai 0.
+F.S : array terisi data sebanyak N}
+Kamus Data procedure
+  inputBil : integer
+Algoritma Procedure
+  for i <- 0 to N do
+  input(inputBil)
+  if inputBil MOD 10 == 0 then
+    if inputBil MOD 5 == 0 then
+        arrBil[i] <- inputBil
+        i <- i + 1
+      else then
+        break
+      endif
+    endif
+  endfor
+endProcedure
+
+Procedure geser1(In/Out A : arrBil, N : integer)
+{I.S. Terdefinisi Array yang berisi angka dengan jumlah data kurang dari 1000.
+F.S Data pada array tergeser 1 indeks ke kiri, data terakhir tetap.}
+Algoritma Procedure
+  for i <- 2 to N do
+    arrBil[i-2] <- arrBil[i]
+  endfor
+EndProcedure
+
+Algoritma Main
+  NMAX <- 1000
+  input(N)
+  isiArray(arrBil, N)
+  geser1(arrBil, N)
+EndProgram
