@@ -1,4 +1,5 @@
 procedure urutNIP(in/out tabPeg: ArrPeg)
+{insertion sort secara ascending}
 kamus
   pass, i, temp: integer
   poinIndex, poinPass: integer
@@ -19,6 +20,7 @@ endprocedure
 
 
 procedure Bottom(in/out tabPeg: ArrPeg)
+{selection sort secara ascending}
 kamus
   pass, idx, i: integer
 algoritma
