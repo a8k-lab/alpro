@@ -1,0 +1,103 @@
+1. Procedure urutToefl (In/Out A : arrPelamar, in N : integer)
+{I.S. Terdefinisi Array A berisi data N pelamar
+F.S data pelamar pada array A terurut Descending berdasarkan nilai toefl. Gunakan algoritma INSERTION Sort}
+Kamus Data
+  pass, i : integer
+  temp : pelamar
+Algoritma
+  pass <- 1
+
+  while pass <= N-1 do
+    i <- pass
+    temp <- arrPelamar[pass]
+    while i > 0 AND temp.nilai.toefl > arrPelamar[i-1].nilai.toefl do
+      arrPelamar[i] <- arrPelamar[i-1]
+    endwhile
+    arrPelamar[i] <- temp
+    pass <- pass + 1
+  endwhile
+endProcedure
+
+
+
+2. Procedure leastScore(In A : arrPelamar, in N : integer)
+{I.S. terdefinisi sebuah Array A berisi N pelamar yang sudah terurut secara Descending berdasarkan skor Toefl.
+F.S. ditampilkan seluruh nama pelamar dengan skor toefl terkecil. Bisa jadi ada lebih dari 1 pelamar yang memiliki skor terkecil}
+Kamus Data
+  i, skorTerkecil : integer
+Algoritma
+  {dikarenakan A sudah terurut secara descending berdasarkan toefl, maka berarti nilai toefl terkecil ada di elemen/data pelamar paling terakhir}
+  {jadi isi skorTerkecil dengan nilai toefl dari elemen array A index ke N-1, yang berarti index terakhir, karena N adalah panjang dari array A}
+  skorTerkecil <- A[N-1].nilai.toefl
+
+  i <- 0
+
+ {N-1 karena akan menggunakan index untuk di perulangan for}
+  for i to N-1 do
+      if A[i].nilai.toefl == skorTerkecil then
+        {tampilkan setiap nama pelamar yang nilai toefl-Nya sama dengan skorTerkecil}
+        output("Pelamar dengan skor toefl terkecil: ")
+        output(A[i].nama)
+      endif
+  endfor
+endProcedure
+
+
+
+3. Procedure splitData (In/Out A, P, F: arrPelamar)
+{I.S. Terdefinisi sebuah Array A yang SUDAH BERISI N data pelamar dan array P dan F yang kosong.
+F.S. semua data pelamar pada array A yang statusnya PASS akan dicopy ke array P dan yang FAILED ke array F. Pelamar dinyatakan PASS jika minimal rata-rata tes minimal 80 dan nilai tes wawancara minimal 90. Ditampilkan di layar berapa jumlah peserta yang PASS dan berapa yang FAILED}
+Kamus Data
+  i, jumlahPass, jumlahFailed : integer
+  nilaiAvg : real
+Algoritma
+  i <- 0
+  jumlahPass <- 0
+  jumlahFailed <- 0
+
+  for i to A.N do
+    {mengisi nilaiAvg dengan nilai rata-rata dari pelamar index ke-i}
+    nilaiAvg <- (A.data[i].toefl + A.data[i].tulis + A.data[i].wawancara) / 3
+
+    {pengkondisian untuk menambah jumlahPass atau jumlahFailed}
+    {dan menambahkan data pelamar dari A index ke-i, untuk ke data pelamar P atau F}
+    if nilaiAvg >= 80 AND A.data[i].wawancara >= 90 then
+      jumlahPass <- jumlahPass + 1
+      P.data[i] <- A.data[i]
+    else then
+      jumlahFailed <- jumlahFailed + 1
+      F.data[i] <- A.data[i]
+    endif
+  endfor
+
+  output("Jumlah pelamar yang dinyatakan PASS: ")
+  output(jumlahPass)
+
+  output("Jumlah pelamar yang dinyatakan FAILED :")
+  output(jumlahFailed)
+endProcedure
+
+
+
+{saya mengubah tipe data kembalian dari real ke integer, karena jumlah pelamar pasti akan bernilai bilangan bulat}
+
+4. Function countMean(A: arrPelamar)--> integer
+
+{Terdefinisi sebuah Array A yang berisi data N pelamar. DIkembalikan jumlah pelamar yang memiliki rata-rata tes kurang dari 80}
+Kamus Data
+  i, nilaiAvg, hasil : integer
+Algoritma
+  i <- 0 
+
+  for i to NMAX-1 do
+    {nilaiAvg akan berisi nilai rata-rata pelamar index ke-i}
+    nilaiAvg <- (A[i].nilai.toefl + A[i].nilai.tulis + A[i].nilai.wawancara) / 3
+
+    if nilaiAvg < 80 then
+      hasil <- hasil + 1
+    endif
+  endfor
+
+  {mengembalikan variable hasil, yang berisi banyaknya pelamar yang memiliki rata-rata nilai kurang dari 80}
+  return hasil
+endFunction
